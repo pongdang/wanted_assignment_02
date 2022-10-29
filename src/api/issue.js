@@ -1,14 +1,23 @@
 import { get } from './http';
 
-export const fetchIssueList = async ({ owner, repo, sort = 'comments', state = 'open' }) => {
+// @see https://docs.github.com/en/rest/issues/issues#list-repository-issues
+export const fetchIssueList = async ({
+  owner,
+  repo,
+  sort = 'comments',
+  state = 'open',
+  perPage = 30,
+  page = 1,
+}) => {
   const { data } = await get({
     url: `/repos/${owner}/${repo}/issues`,
-    data: { state, sort },
+    data: { state, sort, perPage, page },
   });
 
   return data;
 };
 
+// @see https://docs.github.com/en/rest/issues/issues#get-an-issue
 export const fetchIssue = async ({ owner, repo, id }) => {
   const { data } = await get({
     url: `/repos/${owner}/${repo}/issues/${id}`,
