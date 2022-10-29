@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import IssueList from './pages/IssueList';
+import { IssueListPage } from './pages/IssueListPage';
 
 export default function Router() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<IssueList />} />
+        <Route path="/" element={<IssueListPage />} />
       </Routes>
     </BrowserRouter>
   );
