@@ -8,16 +8,16 @@ const IssueContext = createContext({
 
 export const IssueContextProvider = ({ children }) => {
   const value = {
-    useIssue: ({ owner, repo, id }) => {
+    useIssue: ({ owner, repo, number }) => {
       const [isLoading, setLoading] = useState(true);
       const [issue, setIssue] = useState(null);
 
       useEffect(() => {
-        fetchIssue({ owner, repo, id }).then(x => {
+        fetchIssue({ owner, repo, number }).then(x => {
           setIssue(x);
           setLoading(false);
         });
-      }, [id, owner, repo]);
+      }, [number, owner, repo]);
 
       return { issue, isLoading };
     },

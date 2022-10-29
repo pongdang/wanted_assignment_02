@@ -18,9 +18,9 @@ export const fetchIssueList = async ({
 };
 
 // @see https://docs.github.com/en/rest/issues/issues#get-an-issue
-export const fetchIssue = async ({ owner, repo, id }) => {
+export const fetchIssue = async ({ owner, repo, number }) => {
   const { data } = await get({
-    url: `/repos/${owner}/${repo}/issues/${id}`,
+    url: `/repos/${owner}/${repo}/issues/${number}`,
   });
 
   return data;

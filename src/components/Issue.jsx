@@ -2,9 +2,9 @@ import styled from '@emotion/styled';
 import React from 'react';
 import { useIssueContext } from '../contexts/IssueContext';
 
-export function Issue({ owner, repo, id }) {
+export function Issue({ owner, repo, number }) {
   const { useIssue } = useIssueContext();
-  const { issue, isLoading } = useIssue({ owner, repo, id });
+  const { issue, isLoading } = useIssue({ owner, repo, number });
 
   if (isLoading) {
     return <>Loading</>;
@@ -14,9 +14,9 @@ export function Issue({ owner, repo, id }) {
 
   return (
     <>
-      <Container key={id}>
+      <Container key={number}>
         <h1>{title}</h1>
-        <p>{id}</p>
+        <p>{number}</p>
         <p>{user.login}</p>
         <p>{user.login}</p>
         <p>{comments}</p>
