@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 
 const converKindMessage = message => {
   switch (message) {
-    case `Unauthorized`:
-      return `비밀번호가 틀렸어요.\n다시 입력해주세요`;
+    case `Not Found`:
+      return `없는 페이지입니다.\n확인 버튼을 누르면 메인 화면으로 이동해요!`;
     default:
       return message;
   }
@@ -39,6 +39,7 @@ const Modal = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  padding: 0 20px;
   background: rgba(0, 0, 0, 0.5);
   z-index: 2;
 `;
@@ -48,6 +49,8 @@ const Message = styled.p`
   font-size: 1.6rem;
   font-weight: bold;
   white-space: pre-wrap;
+  word-break: keep-all;
+  line-height: 1.5;
 `;
 
 const Section = styled.section`
@@ -55,6 +58,7 @@ const Section = styled.section`
   max-width: 500px;
   border-radius: 20px;
   margin-top: 20px;
+  margin: 20px 20px 0;
   padding: 42px;
   background-color: #fff;
   z-index: 1;
@@ -65,9 +69,20 @@ const ErrorResetButton = styled.button`
   display: block;
   border-radius: 20px;
   background-color: #dc602a;
-  padding: 12px;
+  padding: 15px;
   margin-top: 30px;
   color: #fff;
   font-weight: 600;
   letter-spacing: 1.2px;
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #c44c19;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 `;
