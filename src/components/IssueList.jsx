@@ -71,7 +71,7 @@ const Li = styled.li`
   box-sizing: border-box;
   box-shadow: 0px 1px 3px rgb(0 0 0 / 14%), 0px 1px 2px rgb(0 0 0 / 24%);
   margin-top: 20px;
-  height: 90px;
+
   a {
     padding: 20px;
     display: block;

@@ -28,6 +28,10 @@ const TitleLayout = styled.div`
   p {
     font-size: 1.4rem;
   }
+
+  @media screen and (max-width: 750px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Title = styled.h1`
@@ -36,6 +40,14 @@ const Title = styled.h1`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
+
+  @media screen and (max-width: 750px) {
+    display: unset;
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: 1.8rem;
+  }
 `;
 
 const Comment = styled.p`
@@ -43,10 +55,21 @@ const Comment = styled.p`
   grid-column: 2 / 3;
   align-self: center;
   justify-self: center;
+
+  @media screen and (max-width: 750px) {
+    grid-row: unset;
+    grid-column: unset;
+    justify-self: end;
+  }
 `;
 
 const Author = styled.div`
   display: flex;
   flex-direction: row;
   gap: 10px;
+  word-break: keep-all;
+
+  @media screen and (max-width: 400px) {
+    display: block;
+  }
 `;

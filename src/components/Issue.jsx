@@ -45,8 +45,9 @@ const Container = styled.section`
 `;
 
 const TitleLayout = styled.div`
-  display: flex;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 16px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(0 0 0 / 14%);
   margin-bottom: 20px;
@@ -56,5 +57,15 @@ const TitleLayout = styled.div`
     object-fit: cover;
     width: 60px;
     height: 60px;
+  }
+
+  @media screen and (max-width: 750px) {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    img {
+      margin-top: -40px;
+      box-shadow: 0px 0px 1px rgb(0 0 0 / 14%), 0px -2px 4px rgb(0 0 0 / 24%);
+    }
   }
 `;
