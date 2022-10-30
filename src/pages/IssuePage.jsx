@@ -1,9 +1,9 @@
 import { ErrorBoundary } from '../components/ErrorBoundary';
-import { Issue } from '../components/Issue';
 import { IssueContextProvider } from '../contexts/IssueContext';
 import { useParams } from 'react-router';
 import { RenderFallback } from '../components/RenderFallback';
 import { useCurrentRepoContext } from '../contexts/CurrentRepoContext';
+import { Issue } from '../components/issues/Issue';
 
 export function IssuePage() {
   const params = useParams();

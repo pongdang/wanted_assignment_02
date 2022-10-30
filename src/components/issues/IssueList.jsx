@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useIssueListContext } from '../contexts/IssueListContext';
-import { WantedAd } from '../components/WantedAd';
+import { WantedAd } from '../WantedAd';
 import { useState, useEffect, useRef } from 'react';
-import { TitleInfo } from './TitleInfo';
+import { TitleInfo } from '../TitleInfo';
+import { useIssueListContext } from '../../contexts/IssueListContext';
 
 export function IssueList({ owner, repo }) {
   const [page, setPage] = useState(1);

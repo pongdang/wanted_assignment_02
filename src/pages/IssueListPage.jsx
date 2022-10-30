@@ -1,8 +1,8 @@
 import { ErrorBoundary } from '../components/ErrorBoundary';
-import { IssueList } from '../components/IssueList';
 import { IssueListContextProvider } from '../contexts/IssueListContext';
 import { RenderFallback } from '../components/RenderFallback';
 import { useCurrentRepoContext } from '../contexts/CurrentRepoContext';
+import { IssueList } from '../components/issues/IssueList';
 
 export function IssueListPage() {
   const { repo } = useCurrentRepoContext();

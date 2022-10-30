@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { useIssueContext } from '../contexts/IssueContext';
-import { MarkdownRender } from './MarkdownRender';
-import { TitleInfo } from './TitleInfo';
+import { useIssueContext } from '../../contexts/IssueContext';
+import { MarkdownRender } from '../MarkdownRender';
+import { TitleInfo } from '../TitleInfo';
 
 export function Issue({ owner, repo, number }) {
   const { issue, isLoading, useIssue } = useIssueContext();
