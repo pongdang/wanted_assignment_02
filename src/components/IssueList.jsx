@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useIssueListContext } from '../contexts/IssueListContext';
 import { WantedAd } from '../components/WantedAd';
 import { useState, useEffect, useRef } from 'react';
+import { TitleInfo } from './TitleInfo';
 
 export function IssueList({ owner, repo }) {
   const [page, setPage] = useState(1);
@@ -39,25 +40,26 @@ export function IssueList({ owner, repo }) {
   }, [bottom]);
 
   if (isLoading) {
-    return <p>Loading</p>;
+    return <h1>Loading</h1>;
   }
 
   return (
     <ul>
-      {issueList.map(({ id, number, user, title, login, comments, ...etc }, index) => (
+      {issueList.map(({ id, number, user, title, login, comments, created_at, ...etc }, index) => (
         <React.Fragment key={id}>
           {index === 4 ? <WantedAd key={'WantedAd'} /> : null}
 
-          <Container>
+          <Li>
             <Link to={`/${number}`}>
-              {/* 이슈번호, 이슈제목, 작성자, 작성일, 코멘트수 */}
-              <h1>{`${number} | ${comments}`}</h1>
-              {/* <h1>{title}</h1>
-            <p>{id}</p>
-            <p>{user.login}</p> */}
-              {/* <p>{comments}</p> */}
+              <TitleInfo
+                number={number}
+                title={title}
+                comments={comments}
+                user={user}
+                created_at={created_at}
+              />
             </Link>
-          </Container>
+          </Li>
         </React.Fragment>
       ))}
       <div ref={setBottom} />
@@ -65,6 +67,13 @@ export function IssueList({ owner, repo }) {
   );
 }
 
-const Container = styled.li`
-  border: 1px solid;
+const Li = styled.li`
+  box-sizing: border-box;
+  box-shadow: 0px 1px 3px rgb(0 0 0 / 14%), 0px 1px 2px rgb(0 0 0 / 24%);
+  margin-top: 20px;
+  height: 90px;
+  a {
+    padding: 20px;
+    display: block;
+  }
 `;
