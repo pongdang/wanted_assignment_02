@@ -7,11 +7,13 @@ const IssueListContext = createContext({
 });
 
 export const IssueListContextProvider = ({ children }) => {
-  const value = {
-    useIssueList: ({ owner, repo, perPage, page }) => {
-      const [isLoading, setLoading] = useState(true);
-      const [issueList, setIssueList] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [issueList, setIssueList] = useState(null);
 
+  const value = {
+    isLoading,
+    issueList,
+    useIssueList: ({ owner, repo, perPage, page }) => {
       useEffect(() => {
         if (owner == null || repo == null) {
           return;
@@ -23,8 +25,6 @@ export const IssueListContextProvider = ({ children }) => {
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [owner, page, perPage, repo]);
-
-      return { issueList, isLoading };
     },
   };
 

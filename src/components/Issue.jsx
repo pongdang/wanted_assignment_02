@@ -4,8 +4,9 @@ import { useIssueContext } from '../contexts/IssueContext';
 import { MarkdownRender } from './MarkdownRender';
 
 export function Issue({ owner, repo, number }) {
-  const { useIssue } = useIssueContext();
-  const { issue, isLoading } = useIssue({ owner, repo, number });
+  const { issue, isLoading, useIssue } = useIssueContext();
+
+  useIssue({ owner, repo, number });
 
   if (isLoading) {
     return <p>Loading</p>;

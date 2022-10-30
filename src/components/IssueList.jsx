@@ -7,11 +7,11 @@ import { useState, useEffect, useRef } from 'react';
 
 export function IssueList({ owner, repo }) {
   const [page, setPage] = useState(1);
-  const { useIssueList } = useIssueListContext();
-  const { issueList, isLoading } = useIssueList({ owner, repo, page });
-
+  const { issueList, isLoading, useIssueList } = useIssueListContext();
   const [bottom, setBottom] = useState(null);
   const bottomObserver = useRef(null);
+
+  useIssueList({ owner, repo, page });
 
   // @see https://kyounghwan01.github.io/blog/React/infinite-scroll/#intersection-observer-api를-사용한-무한-스크롤
   useEffect(() => {

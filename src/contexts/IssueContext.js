@@ -7,11 +7,13 @@ const IssueContext = createContext({
 });
 
 export const IssueContextProvider = ({ children }) => {
-  const value = {
-    useIssue: ({ owner, repo, number }) => {
-      const [isLoading, setLoading] = useState(true);
-      const [issue, setIssue] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [issue, setIssue] = useState(null);
 
+  const value = {
+    issue,
+    isLoading,
+    useIssue: ({ owner, repo, number }) => {
       useEffect(() => {
         if (owner == null || repo == null) {
           return;
@@ -22,8 +24,6 @@ export const IssueContextProvider = ({ children }) => {
           setLoading(false);
         });
       }, [number, owner, repo]);
-
-      return { issue, isLoading };
     },
   };
 
