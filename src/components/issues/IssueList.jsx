@@ -48,7 +48,7 @@ export function IssueList({ owner, repo }) {
     <ul>
       {issueList.map(({ id, number, user, title, login, comments, created_at }, index) => (
         <React.Fragment key={id}>
-          {index === 4 ? <WantedAd key={'WantedAd'} /> : null}
+          {index === 4 && <WantedAd key={'WantedAd'} />}
 
           <Li>
             <Link to={`/${number}`}>
