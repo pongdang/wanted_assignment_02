@@ -39,7 +39,7 @@ export function IssueList({ owner, repo }) {
   }, [bottom]);
 
   if (isLoading) {
-    return <>Loading</>;
+    return <p>Loading</p>;
   }
 
   return (

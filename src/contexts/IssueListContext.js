@@ -13,6 +13,10 @@ export const IssueListContextProvider = ({ children }) => {
       const [issueList, setIssueList] = useState(null);
 
       useEffect(() => {
+        if (owner == null || repo == null) {
+          return;
+        }
+
         fetchIssueList({ owner, repo, perPage, page }).then(x => {
           setIssueList([...(issueList ?? []), ...x]);
           setLoading(false);

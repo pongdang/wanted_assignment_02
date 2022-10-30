@@ -1,16 +1,17 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { useIssueContext } from '../contexts/IssueContext';
+import { MarkdownRender } from './MarkdownRender';
 
 export function Issue({ owner, repo, number }) {
   const { useIssue } = useIssueContext();
   const { issue, isLoading } = useIssue({ owner, repo, number });
 
   if (isLoading) {
-    return <>Loading</>;
+    return <p>Loading</p>;
   }
 
-  const { title, user, comments } = issue;
+  const { title, body, user, comments } = issue;
 
   return (
     <>
@@ -20,6 +21,7 @@ export function Issue({ owner, repo, number }) {
         <p>{user.login}</p>
         <p>{user.login}</p>
         <p>{comments}</p>
+        <MarkdownRender body={body} />
       </Container>
     </>
   );

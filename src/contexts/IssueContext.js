@@ -13,6 +13,10 @@ export const IssueContextProvider = ({ children }) => {
       const [issue, setIssue] = useState(null);
 
       useEffect(() => {
+        if (owner == null || repo == null) {
+          return;
+        }
+
         fetchIssue({ owner, repo, number }).then(x => {
           setIssue(x);
           setLoading(false);
