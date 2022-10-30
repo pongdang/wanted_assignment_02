@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 import { useIssueContext } from '../../contexts/IssueContext';
+import { Loading } from '../Loading';
 import { MarkdownRender } from '../MarkdownRender';
 import { TitleInfo } from '../TitleInfo';
 
@@ -10,7 +11,7 @@ export function Issue({ owner, repo, number }) {
   useIssue({ owner, repo, number });
 
   if (isLoading) {
-    return <p>Loading</p>;
+    return <Loading />;
   }
 
   const { title, body, user, comments, created_at } = issue;

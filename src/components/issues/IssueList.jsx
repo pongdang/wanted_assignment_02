@@ -5,6 +5,7 @@ import { WantedAd } from '../WantedAd';
 import { useState, useEffect, useRef } from 'react';
 import { TitleInfo } from '../TitleInfo';
 import { useIssueListContext } from '../../contexts/IssueListContext';
+import { Loading } from '../Loading';
 
 export function IssueList({ owner, repo }) {
   const [page, setPage] = useState(1);
@@ -40,7 +41,7 @@ export function IssueList({ owner, repo }) {
   }, [bottom]);
 
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return <Loading />;
   }
 
   return (
