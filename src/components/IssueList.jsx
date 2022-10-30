@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useIssueListContext } from '../contexts/IssueListContext';
 import { WantedAd } from '../components/WantedAd';
 import { useState, useEffect, useRef } from 'react';
 
 export function IssueList({ owner, repo }) {
   const [page, setPage] = useState(1);
-  const navigate = useNavigate();
   const { useIssueList } = useIssueListContext();
   const { issueList, isLoading } = useIssueList({ owner, repo, page });
 
@@ -44,24 +43,28 @@ export function IssueList({ owner, repo }) {
   }
 
   return (
-    <>
+    <ul>
       {issueList.map(({ id, number, user, title, login, comments, ...etc }, index) => (
         <React.Fragment key={id}>
           {index === 4 ? <WantedAd key={'WantedAd'} /> : null}
 
-          <Container onClick={() => navigate(`/${number}`)}>
-            {/* 이슈번호, 이슈제목, 작성자, 작성일, 코멘트수 */}
-            <h1>{`${number} | ${comments}`}</h1>
-            {/* <h1>{title}</h1>
+          <Container>
+            <Link to={`/${number}`}>
+              {/* 이슈번호, 이슈제목, 작성자, 작성일, 코멘트수 */}
+              <h1>{`${number} | ${comments}`}</h1>
+              {/* <h1>{title}</h1>
             <p>{id}</p>
             <p>{user.login}</p> */}
-            {/* <p>{comments}</p> */}
+              {/* <p>{comments}</p> */}
+            </Link>
           </Container>
         </React.Fragment>
       ))}
       <div ref={setBottom} />
-    </>
+    </ul>
   );
 }
 
-const Container = styled.div``;
+const Container = styled.li`
+  border: 1px solid;
+`;
