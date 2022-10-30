@@ -62,6 +62,33 @@ api를 요청하는 함수를 `api` 폴더 안에 만들어 분리했습니다.
 함수 바깥에서 `owner`, `repo` 를 입력받아 api 요청을 보내도록 하여 변경에 용이하도록 했습니다.
 
 ```js
+// src/contexts/CurrentRepoContext.js
+
+import { createContext, useContext, useEffect, useState } from 'react';
+
+const CurrentRepoContext = createContext({
+  repo: {},
+});
+
+export const CurrentRepoContextProvider = ({ children }) => {
+  const [repo, setRepo] = useState({});
+  const value = { repo };
+
+  useEffect(() => {
+    setRepo({ owner: 'angular', repoName: 'angular-cli' });
+  }, []);
+
+  return <CurrentRepoContext.Provider value={value}>{children}</CurrentRepoContext.Provider>;
+};
+
+export const useCurrentRepoContext = () => {
+  return useContext(CurrentRepoContext);
+};
+```
+
+요청을 보낼 레포 이름과 레포 주인의 이름을 context로 관리합니다.
+
+```js
 // src/contexts/IssueListContext.js
 
 import { useState } from 'react';
@@ -153,9 +180,9 @@ function App() {
 
 ## 필수 요구사항
 
-- [x] 이슈 목록 및 상세 화면 기능 구현
-- [x] Context API를 활용한 API 연동
-- [x] 데이터 요청 중 로딩 표시
+- [x] 1. 이슈 목록 및 상세 화면 기능 구현
+- [x] 2. Context API를 활용한 API 연동
+- [x] 3. 데이터 요청 중 로딩 표시
 
 https://user-images.githubusercontent.com/76990149/198887558-98b8b72b-2e8e-495f-b5b5-f61d7c8972ba.mov
 
@@ -193,14 +220,14 @@ export function Issue({ owner, repo, number }) {
 
 context API로 관리하던 로딩상태를 사용하여 `isLoading === true` 일 때 `<Loading />` 컴포넌트를 return 하도록 했습니다.
 
-- [x] 에러 화면 구현
+- [x] 4. 에러 화면 구현
 
 <img width="827" alt="스크린샷 2022-10-31 오전 12 38 46" src="https://user-images.githubusercontent.com/76990149/198887596-360714bc-5460-4e45-94d2-68f0711d0e35.png">
 
 ErrorBoundary로 catch한 error를 모달창으로 보여주었습니다.
 
-- [x] 지정된 조건(open 상태, 코멘트 많은 순)에 맞게 데이터 요청 및 표시
-- 반응형 웹 구현
+- [x] 5. 지정된 조건(open 상태, 코멘트 많은 순)에 맞게 데이터 요청 및 표시
+- [x] 6. 반응형 웹 구현
   - **이슈 목록 페이지 : pc**
     <img width="828" alt="스크린샷 2022-10-31 오전 12 41 21" src="https://user-images.githubusercontent.com/76990149/198887727-ffc1363d-aff9-428f-bdb3-17457ecde630.png">
   - **이슈 목록 페이지 : 모바일**
