@@ -11,6 +11,16 @@ const style = css`
     margin: 0;
   }
 
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+  }
+
   h1,
   h2,
   h3,
