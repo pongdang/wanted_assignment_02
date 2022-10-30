@@ -23,7 +23,7 @@ export function IssueList({ owner, repo }) {
           setPage(x => x + 1);
         }
       },
-      { threshold: 0.25, rootMargin: '80px' }
+      { threshold: 0.25, rootMargin: '180px' }
     );
     bottomObserver.current = observer;
   }, []);
