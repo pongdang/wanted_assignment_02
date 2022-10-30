@@ -4,8 +4,8 @@ import { css } from '@emotion/react';
 export function Loading() {
   return (
     <article css={loadingContainer}>
-      <div class="loadingio-spinner-dual-ring-oltfw0s0vj9">
-        <div class="ldio-kqbb81f2cuq">
+      <div className="loadingio-spinner-dual-ring-oltfw0s0vj9">
+        <div className="ldio-kqbb81f2cuq">
           <div></div>
           <div>
             <div></div>
