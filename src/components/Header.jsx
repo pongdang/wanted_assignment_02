@@ -6,9 +6,13 @@ export function Header() {
   const { repo } = useCurrentRepoContext();
 
   return (
-    <header css={headerBar}>
-      <h1>{`${repo.owner} / ${repo.repoName} `}</h1>
-    </header>
+    <a href="/">
+      <header css={headerBar}>
+        <h1>
+          {repo.owner} / {repo.repoName}
+        </h1>
+      </header>
+    </a>
   );
 }
 
@@ -24,5 +28,6 @@ const headerBar = css`
 
   h1 {
     text-transform: capitalize;
+    font-size: 1.6rem;
   }
 `;
