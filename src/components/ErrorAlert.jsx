@@ -32,7 +32,7 @@ const fadeIn = keyframes`
 
 const Modal = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   position: fixed;
   top: 0;
