@@ -23,7 +23,7 @@ export function IssueList({ owner, repo }) {
           setPage(x => x + 1);
         }
       },
-      { threshold: 0.25, rootMargin: '180px' }
+      { threshold: 0.25, rootMargin: '1000px' }
     );
     bottomObserver.current = observer;
   }, []);
@@ -46,7 +46,7 @@ export function IssueList({ owner, repo }) {
 
   return (
     <ul>
-      {issueList.map(({ id, number, user, title, login, comments, created_at, ...etc }, index) => (
+      {issueList.map(({ id, number, user, title, login, comments, created_at }, index) => (
         <React.Fragment key={id}>
           {index === 4 ? <WantedAd key={'WantedAd'} /> : null}
 
