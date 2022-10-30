@@ -68,7 +68,7 @@ const Section = styled.section`
 const ErrorResetButton = styled.button`
   display: block;
   border-radius: 20px;
-  background-color: #dc602a;
+  background-color: #000;
   padding: 15px;
   margin-top: 30px;
   color: #fff;
@@ -79,7 +79,7 @@ const ErrorResetButton = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #c44c19;
+    background-color: #626262;
   }
 
   &:active {
